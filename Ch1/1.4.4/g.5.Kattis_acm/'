@@ -1,0 +1,33 @@
+import sys
+from functools import reduce
+
+def main():
+    lines = sys.stdin.read().splitlines()
+
+    acc_times = [0] * 26
+    print(acc_times)
+    statuses = [0] * 26
+    for line in lines:
+        line = line.split()
+        if line[0] == '-1':
+            break
+        t = int(line[0])
+        problem = ord(line[1]) - ord('A')
+        status = line[2]
+        if status == 'right':
+            acc_times[problem] = acc_times[problem] + t
+            statuses[problem] = 1
+        else:
+            acc_times[problem] = acc_times[problem] + 20
+
+    print(
+        len([s for s in statuses if s == 1]),
+        reduce(lambda x, y: x + y, [t for t, s in zip(acc_time, statuses) if s == 1])
+    )
+
+
+            
+
+
+if __name__ == "__main__":
+    main()
