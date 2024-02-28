@@ -13,7 +13,7 @@ def main():
         m = int(float(m)*1000)
         p = 0
         while b >= 5:
-            i = b * r
+            i = int(b * r)
             if i % 10 >= 5:
                 i -= i % 10 
                 i += 10
@@ -27,7 +27,7 @@ def main():
             else:
                 b -= b % 10
 
-            b = b - m
+            b -= m
             if p > 1200:
                 break
 
