@@ -5,12 +5,12 @@ from itertools import permutations
 
 def main():
     lines = sys.stdin.read().splitlines()
-    cases = permutations(lines[0].split('/'))
+    cases = permutations(int(x) for x in lines[0].split('/'))
     valid_cases = []
     for case in cases:
         try:
-            y = '2000'[:4-len(case[0])] + case[0]
-            d = date(int(y), int(case[1]), int(case[2]))
+            year = 2000+case[0] if case[0] <= 99 else case[0]
+            d = date(year, case[1], case[2])
         except ValueError:
             ...
         else:
